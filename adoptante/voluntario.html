@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huellitas - Registro de Voluntario</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700&display=swap');
+        
+        :root { 
+            --azul: #0071E3; 
+            --fondo: #f5f5f7; 
+            --blanco: #ffffff; 
+            --borde: #d2d2d7;
+            --texto: #1d1d1f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Inter Tight", sans-serif; }
+        body { background: var(--fondo); color: var(--texto); padding-bottom: 50px; }
+
+        .header {
+            background: var(--blanco);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--borde);
+            margin-bottom: 30px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 { margin-bottom: 30px; color: var(--azul); font-size: 28px; text-align: center; }
+        
+        .form-group { 
+            margin-bottom: 20px; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; }
+
+        input, select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--borde);
+            border-radius: 12px;
+            background: #fbfbfb;
+            font-size: 15px;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--azul);
+        }
+
+        .btn-registrar {
+            width: 100%;
+            background: var(--azul);
+            color: white;
+            border: none;
+            padding: 18px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 14px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Huellitas</h1>
+    </div>
+
+    <div class="form-container">
+        <form id="registroVoluntarioForm">
+            <h2>Nuevo Voluntario</h2>
+
+            <div class="form-group">
+                <label>Nombre(s)</label>
+                <input type="text" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label>Apellidos</label>
+                <input type="text" name="apellidos" required>
+            </div>
+
+            <div class="form-group">
+                <label>Teléfono Celular</label>
+                <input type="tel" name="telefono" required>
+            </div>
+
+            <div class="form-group">
+                <label>Correo Electrónico (Usuario)</label>
+                <input type="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Contraseña de Acceso</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label>Rol en el Refugio (Catálogo VoluntarioRol)</label>
+                <select name="id_VoluntarioRol" required>
+                    <option value="">Seleccionar rol...</option>
+                    <option value="Veterinario">Veterinario</option>
+                    <option value="Logistica">Logística</option>
+                    <option value="Administrativo">Administrativo</option>
+                    <option value="Mantenimiento">Mantenimiento</option>
+                    <option value="Limpieza">Limpieza</option>
+                    <option value="Atencion_personas">Atención a Personas</option>
+                    <option value="Rescate">Rescate</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Sede Principal Asignada</label>
+                <select name="id_sede" required>
+                    <option value="">Seleccionar sede...</option>
+                    </select>
+            </div>
+
+            <div class="form-group">
+                <label>Fecha de Inicio de Actividades</label>
+                <input type="date" name="fecha_inicio" required>
+            </div>
+
+            <button type="submit" class="btn-registrar">Crear Cuenta de Voluntario</button>
+        </form>
+    </div>
+
+</body>
+</html>
