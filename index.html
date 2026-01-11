@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/open-props"/>
     <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Variables CSS personalizadas para Huellitas */
         :root {
@@ -675,6 +676,24 @@
         }
 
         /* Utilidades */
+
+                /* Modal animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                transform: translateY(30px); 
+                opacity: 0; 
+            }
+            to { 
+                transform: translateY(0); 
+                opacity: 1; 
+            }
+        }
+
         .container {
             max-width: 80rem;
             padding-inline: var(--size-5);
@@ -704,6 +723,7 @@
                 <a href="#adoptar" class="navbar-link">Adoptar</a>
                 <a href="#nosotros" class="navbar-link">Nosotros</a>
                 <a href="#testimonios" class="navbar-link">Testimonios</a>
+                <a href="#eventos" class="navbar-link">Eventos y Donaciones</a>
                 <a href="#contacto" class="navbar-link">Contacto</a>
                 <a href="./index_secundario.html" class="btn-primary">Iniciar Sesión</a>
             </div>
@@ -824,6 +844,139 @@
         </div>
     </section>
 
+        <!-- Sección de Eventos y Donaciones (Carrusel) -->
+    <section class="section events-section" id="eventos">
+        <div class="container">
+            <h2 class="section__title">Eventos y Donaciones</h2>
+            <p class="text-center" style="margin-bottom: 3rem; color: #666; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Participa en nuestras actividades y campañas para ayudar a más animalitos
+            </p>
+            
+            <!-- Carrusel de Eventos -->
+            <div class="events-carousel-container" style="position: relative; overflow: hidden; padding: 2rem 0; margin-bottom: 4rem;">
+                <div class="carousel-controls" style="position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); pointer-events: none; z-index: 10;">
+                    <button class="carousel-btn prev-btn" style="pointer-events: all; width: 50px; height: 50px; border-radius: 50%; background: white; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--dark-color); transition: var(--transition); margin-left: 1rem;">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next-btn" style="pointer-events: all; width: 50px; height: 50px; border-radius: 50%; background: white; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--dark-color); transition: var(--transition); margin-right: 1rem;">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="events-carousel" style="display: flex; transition: transform 0.5s ease; gap: 2rem; padding: 0 2rem;">
+                    <!-- Evento 1 -->
+                    <div class="event-card" style="flex: 0 0 350px; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: var(--transition);">
+                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800&h=300&fit=crop" alt="Feria de Adopción" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 1.5rem;">
+                            <span style="display: inline-block; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 1rem; background: rgba(255,107,53,0.1); color: var(--primary-color);">Feria de Adopción</span>
+                            <h3 style="font-size: 20px; font-weight: 700; color: var(--dark-color); margin-bottom: 10px; line-height: 1.3;">Gran Feria de Adopción</h3>
+                            <div style="display: flex; align-items: center; gap: 8px; color: #666; font-size: 14px; margin-bottom: 15px;">
+                                <i class="far fa-calendar-alt" style="color: var(--primary-color);"></i>
+                                <span>15 Marzo 2024</span>
+                            </div>
+                            <p style="color: #666; font-size: 14px; line-height: 1.6; margin-bottom: 1.5rem;">
+                                Conoce a nuestros animalitos disponibles para adopción. Charlas, juegos y asesoría gratuita.
+                            </p>
+                            <button class="btn-primary" style="width: 100%;">
+                                <i class="fas fa-paw"></i> Participar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Evento 2 -->
+                    <div class="event-card" style="flex: 0 0 350px; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: var(--transition);">
+                        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=800&h=300&fit=crop" alt="Carrera Canina" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 1.5rem;">
+                            <span style="display: inline-block; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 1rem; background: rgba(26,147,111,0.1); color: var(--secondary-color);">Recaudación</span>
+                            <h3 style="font-size: 20px; font-weight: 700; color: var(--dark-color); margin-bottom: 10px; line-height: 1.3;">Carrera Canina "Corre por Ellos"</h3>
+                            <div style="display: flex; align-items: center; gap: 8px; color: #666; font-size: 14px; margin-bottom: 15px;">
+                                <i class="far fa-calendar-alt" style="color: var(--primary-color);"></i>
+                                <span>22 Marzo 2024</span>
+                            </div>
+                            <p style="color: #666; font-size: 14px; line-height: 1.6; margin-bottom: 1.5rem;">
+                                Carrera 5K para recaudar fondos para tratamientos veterinarios. ¡Inscríbete con tu perro!
+                            </p>
+                            <button class="btn-primary" style="width: 100%;">
+                                <i class="fas fa-donate"></i> Donar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Evento 3 -->
+                    <div class="event-card" style="flex: 0 0 350px; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: var(--transition);">
+                        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=800&h=300&fit=crop" alt="Voluntariado" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 1.5rem;">
+                            <span style="display: inline-block; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 1rem; background: rgba(255,209,102,0.1); color: #d4a017;">Voluntariado</span>
+                            <h3 style="font-size: 20px; font-weight: 700; color: var(--dark-color); margin-bottom: 10px; line-height: 1.3;">Día de Limpieza del Refugio</h3>
+                            <div style="display: flex; align-items: center; gap: 8px; color: #666; font-size: 14px; margin-bottom: 15px;">
+                                <i class="far fa-calendar-alt" style="color: var(--primary-color);"></i>
+                                <span>30 Marzo 2024</span>
+                            </div>
+                            <p style="color: #666; font-size: 14px; line-height: 1.6; margin-bottom: 1.5rem;">
+                                Únete a nuestro equipo de voluntarios para mejorar las instalaciones del refugio.
+                            </p>
+                            <button class="btn-primary" style="width: 100%;">
+                                <i class="fas fa-hands-helping"></i> Voluntariar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjetas de Donación -->
+            <div class="donation-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Donación 1 -->
+                <div class="donation-card" style="background: #f8f9fa; border-radius: 15px; padding: 2rem; transition: var(--transition); border: 2px solid transparent;">
+                    <div class="donation-icon" style="width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 1rem; background: rgba(255,107,53,0.1); color: var(--primary-color);">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3 style="font-size: 20px; font-weight: 700; color: var(--dark-color); margin-bottom: 10px;">Fondo de Emergencias</h3>
+                    <p style="color: #666; font-size: 14px; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Ayuda a cubrir cirugías y tratamientos para animales en estado crítico.
+                    </p>
+                    <div style="font-size: 28px; font-weight: 700; color: var(--dark-color); margin-bottom: 10px;">
+                        $87,500 <span style="font-size: 14px; color: #666;">/$150,000 MXN</span>
+                    </div>
+                    <div style="height: 8px; background: #E9ECEF; border-radius: 4px; margin-bottom: 1rem; overflow: hidden;">
+                        <div style="height: 100%; background: var(--primary-color); border-radius: 4px; width: 58.3%;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; color: #666;">
+                        <span>58.3% recaudado</span>
+                        <span>128 donadores</span>
+                    </div>
+                    <button class="btn-primary" style="width: 100%; margin-top: 1.5rem;">
+                        <i class="fas fa-heartbeat"></i> Donar para Emergencias
+                    </button>
+                </div>
+                
+                <!-- Donación 2 -->
+                <div class="donation-card" style="background: #f8f9fa; border-radius: 15px; padding: 2rem; transition: var(--transition); border: 2px solid transparent;">
+                    <div class="donation-icon" style="width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 1rem; background: rgba(26,147,111,0.1); color: var(--secondary-color);">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 style="font-size: 20px; font-weight: 700; color: var(--dark-color); margin-bottom: 10px;">Ampliación del Refugio</h3>
+                    <p style="color: #666; font-size: 14px; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Construcción de nuevas áreas para albergar a más animales rescatados.
+                    </p>
+                    <div style="font-size: 28px; font-weight: 700; color: var(--dark-color); margin-bottom: 10px;">
+                        $325,000 <span style="font-size: 14px; color: #666;">/$500,000 MXN</span>
+                    </div>
+                    <div style="height: 8px; background: #E9ECEF; border-radius: 4px; margin-bottom: 1rem; overflow: hidden;">
+                        <div style="height: 100%; background: var(--secondary-color); border-radius: 4px; width: 65%;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; color: #666;">
+                        <span>65% recaudado</span>
+                        <span>342 donadores</span>
+                    </div>
+                    <button class="btn-primary" style="width: 100%; margin-top: 1.5rem;">
+                        <i class="fas fa-building"></i> Donar para Construcción
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Footer -->
     <footer class="footer" id="contacto">
         <div class="footer-container">
@@ -855,8 +1008,7 @@
         </div>
     </footer>
 
-    <script>
-        // Pequeño script para mejorar la experiencia de navegación
+        <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Smooth scroll para enlaces internos
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -893,6 +1045,429 @@
             // Observar todas las secciones principales
             document.querySelectorAll('.section').forEach(section => {
                 observer.observe(section);
+            });
+
+            // CARRUSEL MEJORADO
+            const carousel = document.querySelector('.events-carousel');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const eventCards = document.querySelectorAll('.event-card');
+            
+            if (carousel && prevBtn && nextBtn && eventCards.length > 0) {
+                let currentIndex = 0;
+                const cardWidth = eventCards[0].offsetWidth + 32; // ancho real + gap
+                let isAnimating = false;
+                let autoSlideInterval;
+                
+                function updateCarousel(animate = true) {
+                    if (isAnimating) return;
+                    
+                    isAnimating = true;
+                    const translateX = -currentIndex * cardWidth;
+                    
+                    if (animate) {
+                        carousel.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                        carousel.style.transform = `translateX(${translateX}px)`;
+                        
+                        setTimeout(() => {
+                            isAnimating = false;
+                        }, 500);
+                    } else {
+                        carousel.style.transition = 'none';
+                        carousel.style.transform = `translateX(${translateX}px)`;
+                        isAnimating = false;
+                    }
+                }
+                
+                prevBtn.addEventListener('click', () => {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateCarousel();
+                    } else {
+                        // Efecto de bounce
+                        carousel.style.transition = 'transform 0.3s';
+                        carousel.style.transform = 'translateX(10px)';
+                        setTimeout(() => {
+                            carousel.style.transform = 'translateX(0px)';
+                        }, 300);
+                    }
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    if (currentIndex < eventCards.length - 1) {
+                        currentIndex++;
+                        updateCarousel();
+                    } else {
+                        // Efecto de bounce
+                        carousel.style.transition = 'transform 0.3s';
+                        carousel.style.transform = `translateX(-${currentIndex * cardWidth - 10}px)`;
+                        setTimeout(() => {
+                            carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                        }, 300);
+                    }
+                });
+                
+                // Auto-carrusel mejorado
+                function startAutoSlide() {
+                    autoSlideInterval = setInterval(() => {
+                        if (currentIndex < eventCards.length - 1) {
+                            currentIndex++;
+                        } else {
+                            currentIndex = 0;
+                        }
+                        updateCarousel();
+                    }, 5000);
+                }
+                
+                function stopAutoSlide() {
+                    clearInterval(autoSlideInterval);
+                }
+                
+                startAutoSlide();
+                
+                // Pausar auto-carrusel al interactuar
+                carousel.addEventListener('mouseenter', stopAutoSlide);
+                carousel.addEventListener('mouseleave', startAutoSlide);
+                prevBtn.addEventListener('mouseenter', stopAutoSlide);
+                nextBtn.addEventListener('mouseenter', stopAutoSlide);
+                
+                // Recalcular en resize
+                window.addEventListener('resize', () => {
+                    const newCardWidth = eventCards[0].offsetWidth + 32;
+                    if (Math.abs(cardWidth - newCardWidth) > 10) {
+                        updateCarousel(false);
+                    }
+                });
+            }
+
+            // MODAL PARA DONACIONES MEJORADO
+            function showDonationModal(title) {
+                // Crear modal
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.8);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 2000;
+                    opacity: 0;
+                    animation: fadeIn 0.3s forwards;
+                `;
+                
+                // Estilos de animación
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes fadeIn { to { opacity: 1; } }
+                    @keyframes slideUp { 
+                        from { transform: translateY(30px); opacity: 0; }
+                        to { transform: translateY(0); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                // Contenido del modal
+                modal.innerHTML = `
+                    <div style="
+                        background: white;
+                        border-radius: 20px;
+                        padding: 2rem;
+                        max-width: 500px;
+                        width: 90%;
+                        animation: slideUp 0.4s forwards;
+                        animation-delay: 0.1s;
+                        opacity: 0;
+                    ">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                            <h3 style="font-size: 1.5rem; color: var(--primary-color); margin: 0;">Donar a: ${title}</h3>
+                            <button class="close-modal" style="
+                                background: none;
+                                border: none;
+                                font-size: 1.5rem;
+                                cursor: pointer;
+                                color: #666;
+                            ">×</button>
+                        </div>
+                        
+                        <form id="donation-form">
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--dark-color);">
+                                    <i class="fas fa-money-bill-wave"></i> Monto de donación (MXN)
+                                </label>
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <button type="button" class="amount-btn" data-amount="100" style="
+                                        padding: 0.75rem;
+                                        background: rgba(255,107,53,0.1);
+                                        border: 2px solid var(--primary-color);
+                                        border-radius: 10px;
+                                        cursor: pointer;
+                                        font-weight: 600;
+                                        color: var(--primary-color);
+                                        transition: var(--transition);
+                                    ">$100</button>
+                                    <button type="button" class="amount-btn" data-amount="250" style="
+                                        padding: 0.75rem;
+                                        background: rgba(255,107,53,0.1);
+                                        border: 2px solid var(--primary-color);
+                                        border-radius: 10px;
+                                        cursor: pointer;
+                                        font-weight: 600;
+                                        color: var(--primary-color);
+                                        transition: var(--transition);
+                                    ">$250</button>
+                                    <button type="button" class="amount-btn" data-amount="500" style="
+                                        padding: 0.75rem;
+                                        background: rgba(255,107,53,0.1);
+                                        border: 2px solid var(--primary-color);
+                                        border-radius: 10px;
+                                        cursor: pointer;
+                                        font-weight: 600;
+                                        color: var(--primary-color);
+                                        transition: var(--transition);
+                                    ">$500</button>
+                                </div>
+                                <input type="number" 
+                                       id="amount" 
+                                       name="amount" 
+                                       placeholder="O ingresa otro monto" 
+                                       min="10"
+                                       step="10"
+                                       required
+                                       style="
+                                        width: 100%;
+                                        padding: 0.75rem;
+                                        border: 2px solid #E9ECEF;
+                                        border-radius: 10px;
+                                        font-size: 1rem;
+                                    ">
+                            </div>
+                            
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--dark-color);">
+                                    <i class="fas fa-calendar-alt"></i> Fecha de donación
+                                </label>
+                                <input type="date" 
+                                       id="donation-date" 
+                                       name="date" 
+                                       required
+                                       style="
+                                        width: 100%;
+                                        padding: 0.75rem;
+                                        border: 2px solid #E9ECEF;
+                                        border-radius: 10px;
+                                        font-size: 1rem;
+                                    ">
+                            </div>
+                            
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--dark-color);">
+                                    <i class="fas fa-credit-card"></i> Método de pago
+                                </label>
+                                <select id="payment-method" 
+                                        name="payment-method" 
+                                        required
+                                        style="
+                                            width: 100%;
+                                            padding: 0.75rem;
+                                            border: 2px solid #E9ECEF;
+                                            border-radius: 10px;
+                                            font-size: 1rem;
+                                        ">
+                                    <option value="">Selecciona un método</option>
+                                    <option value="card">Tarjeta de crédito/débito</option>
+                                    <option value="paypal">PayPal</option>
+                                    <option value="transfer">Transferencia bancaria</option>
+                                    <option value="oxxo">Pago en OXXO</option>
+                                </select>
+                            </div>
+                            
+                            <div style="margin-bottom: 2rem;">
+                                <label style="display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer;">
+                                    <input type="checkbox" 
+                                           id="recurring" 
+                                           name="recurring"
+                                           style="margin-top: 0.25rem;">
+                                    <span style="color: #666; font-size: 0.9rem;">
+                                        <i class="fas fa-sync-alt"></i> Hacer esta donación mensual
+                                    </span>
+                                </label>
+                            </div>
+                            
+                            <div style="display: flex; gap: 1rem;">
+                                <button type="submit" class="btn-primary" style="flex: 1; padding: 1rem;">
+                                    <i class="fas fa-heart"></i> Confirmar Donación
+                                </button>
+                                <button type="button" class="close-modal btn-secondary" style="flex: 1; padding: 1rem;">
+                                    Cancelar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                
+                // Configurar fecha mínima (hoy)
+                const dateInput = modal.querySelector('#donation-date');
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.min = today;
+                dateInput.value = today;
+                
+                // Botones de monto rápido
+                modal.querySelectorAll('.amount-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        modal.querySelector('#amount').value = this.dataset.amount;
+                        
+                        // Resaltar botón seleccionado
+                        modal.querySelectorAll('.amount-btn').forEach(b => {
+                            b.style.background = 'rgba(255,107,53,0.1)';
+                            b.style.color = 'var(--primary-color)';
+                        });
+                        this.style.background = 'var(--primary-color)';
+                        this.style.color = 'white';
+                    });
+                });
+                
+                // Enviar formulario
+                const form = modal.querySelector('#donation-form');
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const amount = form.querySelector('#amount').value;
+                    const date = form.querySelector('#donation-date').value;
+                    const method = form.querySelector('#payment-method').value;
+                    const recurring = form.querySelector('#recurring').checked;
+                    
+                    if (!amount || amount < 10) {
+                        alert('Por favor ingresa un monto válido (mínimo $10 MXN)');
+                        return;
+                    }
+                    
+                    if (!method) {
+                        alert('Por favor selecciona un método de pago');
+                        return;
+                    }
+                    
+                    // Simular procesamiento
+                    const confirmModal = document.createElement('div');
+                    confirmModal.style.cssText = modal.style.cssText;
+                    confirmModal.innerHTML = `
+                        <div style="
+                            background: white;
+                            border-radius: 20px;
+                            padding: 3rem 2rem;
+                            max-width: 400px;
+                            width: 90%;
+                            text-align: center;
+                            animation: slideUp 0.4s forwards;
+                            opacity: 0;
+                        ">
+                            <div style="width: 80px; height: 80px; background: var(--secondary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; color: white;">
+                                ✓
+                            </div>
+                            <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">¡Donación registrada!</h3>
+                            <p style="color: #666; margin-bottom: 1.5rem;">
+                                Gracias por tu generosidad. Tu donación de <strong>$${amount} MXN</strong> 
+                                ha sido registrada para el ${date}.
+                            </p>
+                            <div style="background: #f8f9fa; border-radius: 10px; padding: 1rem; margin-bottom: 1.5rem;">
+                                <p style="margin: 0.5rem 0;"><strong>Método:</strong> ${method}</p>
+                                <p style="margin: 0.5rem 0;"><strong>Recurrente:</strong> ${recurring ? 'Sí (mensual)' : 'No'}</p>
+                                <p style="margin: 0.5rem 0;"><strong>Referencia:</strong> HLT-${Date.now().toString().slice(-6)}</p>
+                            </div>
+                            <button class="close-all-modals btn-primary" style="width: 100%; padding: 1rem;">
+                                <i class="fas fa-check"></i> Aceptar
+                            </button>
+                        </div>
+                    `;
+                    
+                    modal.remove();
+                    document.body.appendChild(confirmModal);
+                    
+                    confirmModal.querySelector('.close-all-modals').addEventListener('click', () => {
+                        confirmModal.remove();
+                    });
+                });
+                
+                // Cerrar modal
+                modal.querySelectorAll('.close-modal').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        modal.style.animation = 'fadeIn 0.3s reverse forwards';
+                        modal.querySelector('div').style.animation = 'slideUp 0.3s reverse forwards';
+                        setTimeout(() => modal.remove(), 300);
+                    });
+                });
+            }
+
+            // Botones de donación
+            document.querySelectorAll('.donation-card .btn-primary').forEach(button => {
+                button.addEventListener('click', function() {
+                    const title = this.closest('.donation-card').querySelector('h3').textContent;
+                    showDonationModal(title);
+                });
+            });
+            
+            // Botones de eventos
+            document.querySelectorAll('.event-card .btn-primary').forEach(button => {
+                button.addEventListener('click', function() {
+                    const title = this.closest('.event-card').querySelector('h3').textContent;
+                    const eventModal = document.createElement('div');
+                    
+                    eventModal.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.8);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        z-index: 2000;
+                        opacity: 0;
+                        animation: fadeIn 0.3s forwards;
+                    `;
+                    
+                    eventModal.innerHTML = `
+                        <div style="
+                            background: white;
+                            border-radius: 20px;
+                            padding: 2rem;
+                            max-width: 400px;
+                            width: 90%;
+                            animation: slideUp 0.4s forwards;
+                            animation-delay: 0.1s;
+                            opacity: 0;
+                            text-align: center;
+                        ">
+                            <div style="width: 60px; height: 60px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem; color: white;">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">¡Registro exitoso!</h3>
+                            <p style="color: #666; margin-bottom: 1.5rem;">
+                                Te has registrado para: <strong>"${title}"</strong>
+                            </p>
+                            <p style="color: #666; margin-bottom: 1.5rem; font-size: 0.9rem;">
+                                <i class="fas fa-envelope"></i> Recibirás un correo de confirmación con todos los detalles del evento.
+                            </p>
+                            <button class="close-event-modal btn-primary" style="width: 100%; padding: 1rem;">
+                                <i class="fas fa-check"></i> Aceptar
+                            </button>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(eventModal);
+                    
+                    eventModal.querySelector('.close-event-modal').addEventListener('click', () => {
+                        eventModal.style.animation = 'fadeIn 0.3s reverse forwards';
+                        eventModal.querySelector('div').style.animation = 'slideUp 0.3s reverse forwards';
+                        setTimeout(() => eventModal.remove(), 300);
+                    });
+                });
             });
         });
     </script>
