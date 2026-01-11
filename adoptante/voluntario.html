@@ -641,8 +641,7 @@
                             <select class="form-select" id="rol" name="rol" required>
                                 <option value="" selected disabled>Seleccionar rol...</option>
                                 <option value="veterinario">Veterinario</option>
-                                <option value="rescate-logistica">Rescate/Logística</option>
-                                <option value="administrativo">Administrativo</option>
+                                <option value="administrativo">Administrativo / Rescate</option>
                                 <option value="mantenimiento-limpieza">Mantenimiento y Limpieza</option>
                                 <option value="atencion-personas">Atención a Personas</option>
                             </select>
@@ -1190,9 +1189,6 @@
                 case 'veterinario':
                     rolTexto = 'Veterinario';
                     break;
-                case 'rescate-logistica':
-                    rolTexto = 'Rescate/Logística';
-                    break;
                 case 'administrativo':
                     rolTexto = 'Administrativo';
                     break;
@@ -1231,14 +1227,11 @@
         case 'veterinario':
             url = '../voluntarios/homePageSalud.html';
             break;
-        case 'rescate-logistica':
-            url = '../voluntarios/homePageRescate.html';
-            break;
         case 'administrativo':
-            url = '../voluntarios/homePageAdministrativo.html';
+            url = '../voluntarios/homePageRescateAdmin.html';
             break;
         case 'mantenimiento-limpieza':
-            url = '../voluntarios/homePageMantenimiento.html';
+            url = '../voluntarios/homePageLimpiezaM.html';
             break;
         case 'atencion-personas':
             url = '../voluntarios/homePageVAtenPer.html';
