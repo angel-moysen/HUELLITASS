@@ -3,249 +3,353 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel General de Voluntarios</title>
+    <title>Panel General de Voluntarios - Huellitas</title>
     
+    <!-- Mismas dependencias que tu index.html -->
+    <link rel="stylesheet" href="https://unpkg.com/open-props"/>
+    <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* Variables CSS personalizadas para Huellitas */
         :root {
-            --primary: #4a90e2;
-            --success: #28a745;
-            --danger: #dc3545;
-            --info: #17a2b8;
-            --white: #ffffff;
-            --bg: #f4f7f6;
-            --text: #333;
+            --primary-color: #FF6B35;
+            --secondary-color: #1A936F;
+            --accent-color: #FFD166;
+            --dark-color: #1d1d1f;
+            --light-color: #F8F9FA;
+            --gray-light: #E9ECEF;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        /* Estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            margin: 0;
+            font-family: "Inter Tight", system-ui, -apple-system, sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #F5F5F7 0%, #FFFFFF 100%);
             padding: 20px;
-            color: var(--text);
         }
 
+        /* Botones estilo Huellitas */
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.9rem;
+            font-family: "Inter Tight", sans-serif;
+        }
+
+        .btn-primary:hover {
+            background-color: #e05a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 107, 53, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.9rem;
+            font-family: "Inter Tight", sans-serif;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Contenedor principal */
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        /* Título principal */
+        .page-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+        }
+
+.page-title h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    line-height: 1.5;
+
+    /* Fuerza una sola línea */
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; /* Añade puntos suspensivos (...) si el texto es muy largo */
+}
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        h1 { text-align: center; color: #2c3e50; margin-bottom: 30px; }
-
-        /* Estilos de la Card de Asistencia (Sistema previo) */
-        .asistencia-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
+        /* Sección de roles */
+        .roles-section {
+            margin-bottom: 2rem;
         }
 
-        .asistencia-reloj { display: flex; flex-direction: column; }
-        #reloj-digital { font-size: 1.4rem; font-weight: bold; color: #333; }
-        .status-box { padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; margin-top: 5px; display: inline-block;}
-        .status-online { background: #e6fffa; color: var(--success); border: 1px solid var(--success); }
-        .status-offline { background: #f8f9fa; color: #6c757d; border: 1px solid #6c757d; }
-
-        .btn-asistencia { 
-            padding: 12px 24px; border: none; border-radius: 8px; 
-            cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: 0.3s;
+        .section-title {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--dark-color);
+            font-weight: 600;
         }
-        .btn-entrada { background: var(--success); color: white; }
-        .btn-salida { background: #ffc107; color: #212529; }
 
-        /* MENÚ DE SUBROLES (Grid de Tarjetas) */
-        .menu-grid {
+        /* Grid de roles */
+        .roles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .menu-item {
+        /* Tarjetas de rol */
+        .role-card {
             background: white;
-            padding: 30px 20px;
-            border-radius: 15px;
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
             text-align: center;
             text-decoration: none;
-            color: var(--text);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            color: var(--dark-color);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 1.5rem;
             border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
         }
 
-        .menu-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-            border-color: var(--primary);
+        .role-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
         }
 
-        .menu-item i {
-            font-size: 40px;
-            color: var(--primary);
+        .role-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-color);
         }
 
-        .menu-item span {
-            font-weight: 600;
-            font-size: 1.1rem;
+        .role-card:hover::before {
+            transform: scaleX(1);
         }
 
-        /* Colores específicos por rol para ayudar visualmente */
-        .item-salud i { color: #e74c3c; }
-        .item-logistica i { color: #f39c12; }
-        .item-admin i { color: #34495e; }
-        .item-limpieza i { color: #1abc9c; }
-        .item-atencion i { color: #9b59b6; }
-
-        /* Toast Styles (Tu CSS anterior) */
-        #asistencia-toast-container { position: fixed; top: 0; right: 0; z-index: 9999; }
-        .toast {
-            position: fixed; top: 100px; right: 20px;
-            background: var(--white); border-radius: 10px;
-            padding: 15px 20px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-            display: flex; align-items: center; gap: 10px;
-            z-index: 9999; min-width: 300px; max-width: 400px;
-            animation: slideInRight 0.3s ease;
+        .role-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            transition: var(--transition);
         }
-        @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        .toast.success { border-left: 4px solid var(--success); }
-        .toast-icon { font-size: 24px; color: var(--success); }
-        .toast-title { font-weight: 600; }
-        .toast-message { font-size: 14px; color: #666; }
+
+        .role-card:hover .role-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Colores específicos para cada rol */
+        .role-card[data-role="veterinario"] .role-icon {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8E53 100%);
+        }
+
+        .role-card[data-role="rescate"] .role-icon {
+            background: linear-gradient(135deg, #1A936F 0%, #2ECC71 100%);
+        }
+
+        .role-card[data-role="director"] .role-icon {
+            background: linear-gradient(135deg, #34495E 0%, #2C3E50 100%);
+        }
+
+        .role-card[data-role="mantenimiento"] .role-icon {
+            background: linear-gradient(135deg, #FFD166 0%, #FFE082 100%);
+        }
+
+        .role-card[data-role="atencion"] .role-icon {
+            background: linear-gradient(135deg, #9B59B6 0%, #8E44AD 100%);
+        }
+
+        .role-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin: 0;
+        }
+
+        .role-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        /* Botón de volver */
+        .back-button {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .page-title h1 {
+                font-size: 2rem;
+            }
+
+            .roles-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .role-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Panel de Control General</h1>
+    <!-- Contenido principal -->
+    <div class="container">
+        <div class="page-title">
+            <h1>Panel de Control de Voluntarios</h1>
+            <p class="page-subtitle">Selecciona tu área de trabajo para acceder a las herramientas específicas de cada rol</p>
+        </div>
 
-    <div class="asistencia-card">
-        <div class="asistencia-info">
-            <div class="asistencia-reloj">
-                <span id="reloj-digital">00:00:00</span>
-                <small id="fecha-digital">--/--/----</small>
-            </div>
-            <div id="asistencia-status" class="status-box status-offline">
-                <i class="fas fa-clock"></i> <span>Cargando...</span>
+        <!-- Grid de roles -->
+        <div class="roles-section">
+            <div class="roles-grid">
+                <!-- Veterinario -->
+                <a href="homePageSalud.html" class="role-card" data-role="veterinario">
+                    <div class="role-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3 class="role-title">Veterinario</h3>
+                    <p class="role-description">Accede al panel de gestión médica, historiales clínicos, tratamientos y citas veterinarias.</p>
+                    <span class="btn-secondary">Acceder <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <!-- Rescate y Logística -->
+                <a href="homePageRescateAdmin.html" class="role-card" data-role="rescate">
+                    <div class="role-icon">
+                        <i class="fas fa-truck-loading"></i>
+                    </div>
+                    <h3 class="role-title">Rescate y Logística</h3>
+                    <p class="role-description">Gestiona rescates, transporte de animales, inventario y coordinación de recursos.</p>
+                    <span class="btn-secondary">Acceder <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <!-- Director -->
+                <a href="homePageDirector.html" class="role-card" data-role="director">
+                    <div class="role-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="role-title">Director</h3>
+                    <p class="role-description">Panel administrativo completo con reportes, estadísticas y gestión del personal.</p>
+                    <span class="btn-secondary">Acceder <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <!-- Mantenimiento y Limpieza -->
+                <a href="homePageLimpiezaM.html" class="role-card" data-role="mantenimiento">
+                    <div class="role-icon">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <h3 class="role-title">Mantenimiento y Limpieza</h3>
+                    <p class="role-description">Control de limpieza, mantenimiento de instalaciones y gestión de suministros.</p>
+                    <span class="btn-secondary">Acceder <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <!-- Atención a Personas -->
+                <a href="homePageVAtenPer.html" class="role-card" data-role="atencion">
+                    <div class="role-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="role-title">Atención a Personas</h3>
+                    <p class="role-description">Gestión de adoptantes, visitas, seguimientos y atención al público en general.</p>
+                    <span class="btn-secondary">Acceder <i class="fas fa-arrow-right"></i></span>
+                </a>
             </div>
         </div>
-        <button id="btn-toggle-asistencia" class="btn-asistencia btn-entrada">
-            <i class="fas fa-sign-in-alt"></i> Registrar Entrada
-        </button>
+
+        <!-- Botón de volver -->
+        <div class="back-button">
+            <a href="../index.html" class="btn-primary">
+                <i class="fas fa-arrow-left"></i> Volver al Inicio
+            </a>
+        </div>
     </div>
-
-    <div class="menu-grid">
-        <a href="homePageSalud.html" class="menu-item item-salud">
-            <i class="fas fa-user-md"></i>
-            <span>Veterinario</span>
-        </a>
-
-        <a href="homePageRescateAdmin.html" class="menu-item item-logistica">
-            <i class="fas fa-truck-loading"></i>
-            <span>Rescate / Logística</span>
-        </a>
-
-        <a href="#" class="menu-item item-admin">
-            <i class="fas fa-briefcase"></i>
-            <span>Director</span>
-        </a>
-
-        <a href="homePageLimpiezaM.html" class="menu-item item-limpieza">
-            <i class="fas fa-broom"></i>
-            <span>Mantenimiento y Limpieza</span>
-        </a>
-
-        <a href="homePageVAtenPer.html" class="menu-item item-atencion">
-            <i class="fas fa-hands-helping"></i>
-            <span>Atención a Personas</span>
-        </a>
-    </div>
-</div>
-
-<div id="asistencia-toast-container"></div>
-
-<script>
-    // Lógica del Sistema de Asistencia con Persistencia
-    const asistenciaSistema = {
-        estado: JSON.parse(localStorage.getItem('asistencia_estado')) || {
-            currentWorkStatus: 'inactive',
-            lastCheckIn: null,
-            logs: []
-        },
-
-        init: function() {
-            this.actualizarReloj();
-            this.actualizarInterfaz();
-            setInterval(() => this.actualizarReloj(), 1000);
-            document.getElementById('btn-toggle-asistencia').addEventListener('click', () => this.toggleRegistro());
-        },
-
-        actualizarReloj: function() {
-            const ahora = new Date();
-            document.getElementById('reloj-digital').textContent = ahora.toLocaleTimeString();
-            document.getElementById('fecha-digital').textContent = ahora.toLocaleDateString();
-        },
-
-        toggleRegistro: function() {
-            const ahora = new Date();
-            const hora = ahora.toTimeString().split(' ')[0].substring(0, 5);
-            const fecha = ahora.toISOString().split('T')[0];
-
-            if (this.estado.currentWorkStatus === 'inactive') {
-                this.estado.currentWorkStatus = 'active';
-                this.estado.lastCheckIn = hora;
-                this.mostrarNotificacion('¡Entrada Exitosa!', `Registrada a las ${hora}`, 'success', 'fa-check-circle');
-            } else {
-                this.estado.currentWorkStatus = 'inactive';
-                this.mostrarNotificacion('¡Salida Exitosa!', `Buen trabajo hoy`, 'success', 'fa-door-open');
-                this.estado.lastCheckIn = null;
-            }
-
-            localStorage.setItem('asistencia_estado', JSON.stringify(this.estado));
-            this.actualizarInterfaz();
-        },
-
-        actualizarInterfaz: function() {
-            const statusDiv = document.getElementById('asistencia-status');
-            const btn = document.getElementById('btn-toggle-asistencia');
-            if (this.estado.currentWorkStatus === 'active') {
-                statusDiv.className = 'status-box status-online';
-                statusDiv.innerHTML = `<i class="fas fa-check-circle"></i> Activo desde ${this.estado.lastCheckIn}`;
-                btn.className = 'btn-asistencia btn-salida';
-                btn.innerHTML = `<i class="fas fa-sign-out-alt"></i> Registrar Salida`;
-            } else {
-                statusDiv.className = 'status-box status-offline';
-                statusDiv.innerHTML = `<i class="fas fa-clock"></i> No has registrado entrada`;
-                btn.className = 'btn-asistencia btn-entrada';
-                btn.innerHTML = `<i class="fas fa-sign-in-alt"></i> Registrar Entrada`;
-            }
-        },
-
-        mostrarNotificacion: function(titulo, mensaje, tipo, icono) {
-            const container = document.getElementById('asistencia-toast-container');
-            const toast = document.createElement('div');
-            toast.className = `toast ${tipo}`;
-            toast.innerHTML = `
-                <i class="fas ${icono} toast-icon"></i>
-                <div class="toast-content">
-                    <div class="toast-title">${titulo}</div>
-                    <div class="toast-message">${mensaje}</div>
-                </div>
-            `;
-            container.appendChild(toast);
-            setTimeout(() => toast.remove(), 4000);
-        }
-    };
-
-    document.addEventListener('DOMContentLoaded', () => asistenciaSistema.init());
-</script>
 
 </body>
 </html>
